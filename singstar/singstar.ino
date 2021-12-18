@@ -17,14 +17,18 @@ void loop() {
 
 for (int repeats = 0; repeats < max_repeats; repeats++) {
   
-    noviny(2, overall_brightness);
+    nesem_vam_noviny(2, overall_brightness);
     delay(2000);
-    noviny(10, overall_brightness);
-    delay(2000);
-    swapper(2, 20, overall_brightness);
-    delay(2000);
-    noviny(60, overall_brightness);
-    delay(2000);
+    jingle_bells(2, overall_brightness);
+//    
+//    nesem_vam_noviny(10, overall_brightness);
+//    delay(2000);
+//    swapper(2, 20, overall_brightness);
+//    delay(2000);
+//    nesem_vam_noviny(60, overall_brightness);
+//    delay(2000);
+    
+    
   }
 
   // 5 hours
@@ -134,61 +138,77 @@ void all_stars (int duration, int max_level, boolean ramp_up, boolean ramp_down)
   analogWrite(OUTER_STAR, 0);
 }
 
-void noviny (int takt_seconds, int max_brightness) {
+void jingle_bells (int takt_seconds, int max_brightness) {
 
   int takt = takt_seconds * 1000;
   int brightness = max_brightness;
-  
-  inner_star(takt, brightness);
-  outer_star(takt, brightness);
-  crossfade(takt, brightness);
+  int inter_takt_delay = takt * 100;
+  int inter_verse_delay = takt * 200;
 
+  // jin-gle bells
   inner_star(takt, brightness);
-  delay(150);
+  delay(inter_takt_delay);
   inner_star(takt, brightness);
-  crossfade(takt, brightness);
+  delay(inter_takt_delay);
+  inner_star(takt, brightness);
+  delay(inter_verse_delay);
 
+  // jin-gle bells
   outer_star(takt, brightness);
-  delay(150);
+  delay(inter_takt_delay);
   outer_star(takt, brightness);
-  delay(150);
+  delay(inter_takt_delay);
   outer_star(takt, brightness);
-  delay(150);
+  delay(inter_verse_delay);
+
+  // Jin-gle all the way
+  inner_star(takt / 2, brightness);
+  delay(inter_takt_delay / 2);
+  inner_star(takt / 2, brightness);
+  delay(inter_takt_delay / 2);
+  outer_star(takt / 2, brightness);
+  delay(inter_takt_delay / 2);
+  outer_star(takt / 2, brightness);
+  delay(inter_takt_delay / 2);
+  crossfade(takt, brightness);
+  delay(inter_verse_delay);
+
+}
+
+void nesem_vam_noviny (int takt_seconds, int max_brightness) {
+
+  int takt = takt_seconds * 1000;
+  int brightness = max_brightness;
+  int inter_takt_delay = takt * 100;
+  int inter_verse_delay = takt * 200;
+
+  // Ne-sem-vam
+  inner_star(takt, brightness);
+  delay(inter_takt_delay);
   outer_star(takt, brightness);
-  delay(150);
-  
-//  blink_star(takt, brightness);
-//  blink_star(takt, brightness);
-//  blink_star(takt, brightness);
-//  all_stars(takt, brightness, true, false);
-//  all_stars(takt, brightness, true, false);
-//  all_stars(takt, brightness, true, false);
-  
-//  note_1();
-//  delay(takt);
-//  note_1();  delay(takt);
-//  crossfade(1, 255);
-//  analogWrite(INNER_STAR, 255);
-//  analogWrite(OUTER_STAR, 255);
-//  delay(100);
-//  analogWrite(INNER_STAR, 0);
-//  analogWrite(OUTER_STAR, 0);
-//  delay(900);
-//  analogWrite(INNER_STAR, 255);
-//  analogWrite(OUTER_STAR, 255);
-//  delay(100);
-//  analogWrite(INNER_STAR, 0);
-//  analogWrite(OUTER_STAR, 0);
-//  delay(900);
-//  analogWrite(INNER_STAR, 255);
-//  analogWrite(OUTER_STAR, 255);
-//  delay(100);
-//  analogWrite(INNER_STAR, 0);
-//  analogWrite(OUTER_STAR, 0);
-//  delay(900);
-  
-  
-  
+  delay(inter_takt_delay);
+  crossfade(takt, brightness);
+  delay(inter_verse_delay);
+
+  // No-vi-ny
+  crossfade(takt, brightness);
+  delay(inter_takt_delay);
+  crossfade(takt, brightness);
+  delay(inter_takt_delay);
+  crossfade(takt, brightness);
+  delay(inter_verse_delay);
+
+  // Po-slou-chej
+  outer_star(takt, brightness);
+  delay(inter_takt_delay);
+  outer_star(takt, brightness);
+  delay(inter_takt_delay);
+  outer_star(takt, brightness);
+  delay(inter_verse_delay);
+
+  // teeeee
+  crossfade(takt * 3, brightness);
+  delay(inter_verse_delay);
 }
 
 
