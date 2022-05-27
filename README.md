@@ -21,4 +21,4 @@ Light strip stationed in my hallway which does not have any windows, but interco
 
 ## Singstar
 
-CHristmas Star made from LED strips positioned in the window of my daughter's bedroom that translates selected traditional Christmas songs into light sequences, played at some unreasonably slow tempo... thus emanating the christmas spirit to the neighbourhood.
+Christmas Star made from LED strips positioned in the window of my daughter's bedroom that translates selected traditional Christmas songs into light sequences, played at some unreasonably slow tempo... thus emanating the christmas spirit to the neighbourhood.
