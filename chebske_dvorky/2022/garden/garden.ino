@@ -22,6 +22,13 @@
 //int overall_brightness = 16;
 //int max_repeats = 10;
 
+// Generally, you should use "unsigned long" for variables that hold time
+// The value will quickly become too large for an int to store
+unsigned long statusLEDPreviousMillis = 0;
+const long statusLEDBlinkInterval = 1000;
+int statusLED = LOW;
+
+
 void setup() {
 
     // Serial Console Init
@@ -43,18 +50,43 @@ void setup() {
     // --- MOSFET1 ---
     pinMode(MOSFET1, OUTPUT);
 
+    // --- Initial State ---
+    digitalWrite(RELAY1, LOW);
+    digitalWrite(RELAY2, LOW);
+    digitalWrite(RELAY3, LOW);
+    digitalWrite(RELAY4, LOW);
+
 }
 
 void loop() {
+    // Current Timestamp
+    unsigned long currentMillis = millis();
+
+    // Status LED Behaviour Calculation
+    if (currentMillis - previousMillis >= interval) {
+        // save the last time you blinked the LED
+        statusLEDPreviousMillis = currentMillis;
+        // if the LED is off turn it on and vice-versa:
+        if (statusLED == LOW) {
+          statusLED = HIGH;
+        } else {
+          statusLED = LOW;
+        }
+    }
 
     // Set the Runtime Mode:
     if (digitalRead(SWITCH_UP) == HIGH) {
         // Running the Garden of the Day Mode
+        // Blink the STATUS_LED if the time is about right
+        digitalWrite(STATUS_LED, statusLED);
         garden();
     } else if (digitalRead(SWITCH_DOWN) == HIGH) {
-        // Running the Guardian of the Night Mode
+        // Running the Guardian of the Night Mode:
+        // Set the STATUS_LED to ON
+        digitalWrite(STATUS_LED, HIGH);
         guardian();
     }
+
 }
 
 void garden() {
@@ -65,7 +97,15 @@ void guardian() {
 
 }
 
-
+void Scene1() {
+    // --- Relay ---
+    digitalWrite(RELAY1, HIGH);
+    digitalWrite(RELAY2, HIGH);
+    digitalWrite(RELAY3, HIGH);
+    digitalWrite(RELAY4, HIGH);
+    // --- MOSFET ---
+    analogWrite(MOSFET1, 0);
+}
 
 void simple() {
   for (int i = 0; i < 256; i++) {
