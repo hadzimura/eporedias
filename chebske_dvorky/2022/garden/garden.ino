@@ -125,9 +125,8 @@ void guardian() {
         // TODO: Scene 5
     }
 
+    // TODO: After the show run LED dimmer forever
 
-
-    //
 }
 
 void Scene(int scene) {
