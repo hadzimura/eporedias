@@ -1,7 +1,7 @@
 #define INNER_STAR 10
 #define OUTER_STAR 9
 
-int overall_brightness = 16;
+int overall_brightness = 128;
 int max_repeats = 10;
 
 
@@ -15,11 +15,12 @@ void setup() {
 
 void loop() {
 
-for (int repeats = 0; repeats < max_repeats; repeats++) {
+// for (int repeats = 0; repeats < max_repeats; repeats++) {
   
-    nesem_vam_noviny(2, overall_brightness);
+    nesem_vam_noviny(1, overall_brightness);
     delay(2000);
-    jingle_bells(2, overall_brightness);
+    jingle_bells(1, overall_brightness);
+    delay(2000);
 //    
 //    nesem_vam_noviny(10, overall_brightness);
 //    delay(2000);
@@ -29,10 +30,10 @@ for (int repeats = 0; repeats < max_repeats; repeats++) {
 //    delay(2000);
     
     
-  }
+  // }
 
   // 5 hours
-  delay(18000000);
+  // delay(18000000);
   
 }
 
@@ -142,8 +143,8 @@ void jingle_bells (int takt_seconds, int max_brightness) {
 
   int takt = takt_seconds * 1000;
   int brightness = max_brightness;
-  int inter_takt_delay = takt * 100;
-  int inter_verse_delay = takt * 200;
+  int inter_takt_delay = takt_seconds * 100;
+  int inter_verse_delay = takt_seconds * 200;
 
   // jin-gle bells
   inner_star(takt, brightness);
@@ -179,8 +180,8 @@ void nesem_vam_noviny (int takt_seconds, int max_brightness) {
 
   int takt = takt_seconds * 1000;
   int brightness = max_brightness;
-  int inter_takt_delay = takt * 100;
-  int inter_verse_delay = takt * 200;
+  int inter_takt_delay = takt_seconds * 100;
+  int inter_verse_delay = takt_seconds * 200;
 
   // Ne-sem-vam
   inner_star(takt, brightness);

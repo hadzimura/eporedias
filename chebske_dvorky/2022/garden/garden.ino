@@ -28,6 +28,11 @@ unsigned long statusLEDPreviousMillis = 0;
 const long statusLEDBlinkInterval = 1000;
 int statusLED = LOW;
 
+// SETUP
+
+// Number of the Guardian Scenarios defined
+int guardianScenes = 5;
+
 
 void setup() {
 
@@ -51,10 +56,10 @@ void setup() {
     pinMode(MOSFET1, OUTPUT);
 
     // --- Initial State ---
-    digitalWrite(RELAY1, LOW);
-    digitalWrite(RELAY2, LOW);
-    digitalWrite(RELAY3, LOW);
-    digitalWrite(RELAY4, LOW);
+    // digitalWrite(RELAY1, LOW);
+    // digitalWrite(RELAY2, LOW);
+    // digitalWrite(RELAY3, LOW);
+    // digitalWrite(RELAY4, LOW);
 
 }
 
@@ -74,15 +79,15 @@ void loop() {
         }
     }
 
-    // Set the Runtime Mode:
+    // Set the Runtime Mode
     if (digitalRead(SWITCH_UP) == HIGH) {
-        // Running the Garden of the Day Mode
+        // Garden of the Day
         // Blink the STATUS_LED if the time is about right
         digitalWrite(STATUS_LED, statusLED);
         garden();
     } else if (digitalRead(SWITCH_DOWN) == HIGH) {
-        // Running the Guardian of the Night Mode:
-        // Set the STATUS_LED to ON
+        // Guardian of the Night
+        // STATUS_LED: ON
         digitalWrite(STATUS_LED, HIGH);
         guardian();
     }
@@ -93,11 +98,39 @@ void garden() {
 
 }
 
+// The Guardian Mode
+// This runs only once a lifecycle
 void guardian() {
+    // random(min, max);
+    // min: lower bound of the random value, inclusive (optional).
+    // max: upper bound of the random value, exclusive.
 
+    // Choose random scene to be played
+    int scene = (random(1, guardianScenes + 1);
+
+    // Execute the scene
+    if (scene == 1) {
+        // TODO: Scene 1
+    }
+    if (scene == 2) {
+        // TODO: Scene 2
+    }
+    if (scene == 3) {
+        // TODO: Scene 3
+    }
+    if (scene == 4) {
+        // TODO: Scene 4
+    }
+    if (scene == 5) {
+        // TODO: Scene 5
+    }
+
+
+
+    //
 }
 
-void Scene1() {
+void Scene(int scene) {
     // --- Relay ---
     digitalWrite(RELAY1, HIGH);
     digitalWrite(RELAY2, HIGH);
