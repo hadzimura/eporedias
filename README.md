@@ -14,7 +14,6 @@ Collection of Arduino projecxts developed and sometimes even deployed as a part 
 
 Cardboard version of the so called "advent calendar" where you, as a child mostly, receive a gift every day from the start of December until Christmas Day.
 
-
 ## Iluminator
 
 Light strip stationed in my hallway which does not have any windows, but interconnects all the rooms. When you are about to make a trip to the toilet, you are about to witness physically all the obstacles available... and this is where the Iluminator comes into the play.
